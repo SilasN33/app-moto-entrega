@@ -1,0 +1,19 @@
+node_modules
+.next
+out
+
+# variáveis de ambiente — NUNCA commitar
+.env
+.env.*
+!.env.example
+
+.DS_Store
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+
+# planilha original com dados reais da loja
+MOTOBOYS.xlsx
+
+# Claude Code
+.claude/
