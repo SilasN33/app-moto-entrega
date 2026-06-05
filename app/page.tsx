@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { Logo } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -76,16 +75,23 @@ export default function LandingPage() {
             </dl>
           </div>
 
-          {/* Hero image */}
+          {/* Hero diorama loop */}
           <div className="relative">
             <div className="relative aspect-[16/12] overflow-hidden rounded-2xl border border-line bg-paper-2 shadow-paper-lg">
-              <Image
-                src="/brand/hero-1920.webp"
-                alt="Capacete de motoboy sobre superfície clara, com linha de rota brasa que marca o trajeto até um pin de entrega"
-                fill
-                priority
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
+              <video
+                src="/brand/diorama-hero-loop.mp4"
+                poster="/brand/diorama-hero-poster.webp"
+                autoPlay
+                loop
+                muted
+                playsInline
+                aria-label="Maquete em miniatura de uma rua de bairro ao entardecer com uma moto de delivery parada em frente a uma casa"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              {/* Vinheta quente sutil pra realçar o cupom */}
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/25 via-transparent to-transparent"
               />
               {/* Overlay UI element — cupom de entrega */}
               <div className="absolute bottom-4 left-4 right-4 md:bottom-5 md:left-5 md:right-auto md:max-w-[280px]">
@@ -115,7 +121,16 @@ export default function LandingPage() {
       </section>
 
       {/* Features */}
-      <section className="border-t border-line/70 bg-paper-2/40 paper-grain">
+      <section className="relative isolate overflow-hidden border-t border-line/70 bg-paper-2/40 paper-grain">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-cover bg-center bg-scroll opacity-[0.14] md:bg-fixed"
+          style={{ backgroundImage: "url('/brand/diorama-features.webp')" }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-paper-2/70 via-paper-2/40 to-paper-2/70"
+        />
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="mb-12 max-w-2xl">
             <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ember">
@@ -153,8 +168,17 @@ export default function LandingPage() {
       {/* How it works */}
       <section
         id="como-funciona"
-        className="border-t border-line/70"
+        className="relative isolate overflow-hidden border-t border-line/70"
       >
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-cover bg-center bg-scroll opacity-[0.16] md:bg-fixed"
+          style={{ backgroundImage: "url('/brand/diorama-how.webp')" }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-b from-paper via-paper/70 to-paper"
+        />
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="mb-12 flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div className="max-w-xl">
@@ -195,7 +219,16 @@ export default function LandingPage() {
       </section>
 
       {/* Big number / accountability */}
-      <section className="border-t border-line/70 bg-ink text-paper">
+      <section className="relative isolate overflow-hidden border-t border-line/70 bg-ink text-paper">
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-cover bg-center bg-scroll opacity-40 md:bg-fixed"
+          style={{ backgroundImage: "url('/brand/diorama-cta-night.webp')" }}
+        />
+        <div
+          aria-hidden
+          className="absolute inset-0 -z-10 bg-gradient-to-t from-ink via-ink/85 to-ink/55"
+        />
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 md:grid-cols-[1.1fr_1fr] md:items-center">
           <div className="space-y-5">
             <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ember">

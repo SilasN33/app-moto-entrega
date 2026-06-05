@@ -20,6 +20,7 @@ MOTOBOYS.xlsx
 
 # brand source assets — gerados via HiggsField, mantemos só as variantes otimizadas
 public/brand/*-original-*.png
+public/brand/*-original-*.jpeg
 
 # Playwright MCP artefatos
 .playwright-mcp/
