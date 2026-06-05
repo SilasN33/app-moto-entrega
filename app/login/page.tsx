@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Card } from "@/components/ui/Card";
+import { Logo } from "@/components/ui/Logo";
 import { toE164BR } from "@/lib/utils";
 
 type Method = "phone" | "email";
@@ -77,35 +78,41 @@ export default function LoginPage() {
 
   const identifier = method === "phone" ? phone : email;
   const canSend =
-    method === "phone" ? phone.replace(/\D/g, "").length >= 10 : /.+@.+\..+/.test(email);
+    method === "phone"
+      ? phone.replace(/\D/g, "").length >= 10
+      : /.+@.+\..+/.test(email);
 
   return (
-    <main className="flex min-h-dvh flex-col items-center justify-center px-6 safe-top safe-bottom">
-      <div className="w-full max-w-sm space-y-6">
-        <div className="text-center">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-brand-600 text-3xl">
-            🛵
+    <main className="safe-top safe-bottom flex min-h-dvh flex-col items-center justify-center bg-paper px-6">
+      <div className="w-full max-w-sm space-y-7">
+        <div className="space-y-3 text-center">
+          <Link href="/" className="inline-block">
+            <Logo />
+          </Link>
+          <div>
+            <h1 className="text-[26px] font-semibold tracking-tighter2 text-ink">
+              Entrar como motoboy
+            </h1>
+            <p className="mt-1 text-[14px] text-ink-3">
+              {step === "identify"
+                ? "Use seu telefone ou e-mail. Mandamos um código."
+                : method === "phone"
+                  ? "Digite o código que enviamos por SMS"
+                  : "Digite o código que enviamos por e-mail"}
+            </p>
           </div>
-          <h1 className="text-2xl font-bold">Moto Entrega</h1>
-          <p className="mt-1 text-sm text-neutral-600">
-            {step === "identify"
-              ? "Entre com seu telefone ou e-mail"
-              : method === "phone"
-                ? "Digite o código que enviamos por SMS"
-                : "Digite o código que enviamos por e-mail"}
-          </p>
         </div>
 
         <Card className="space-y-4">
           {step === "identify" && (
-            <div className="grid grid-cols-2 rounded-xl bg-neutral-100 p-1 text-sm">
+            <div className="grid grid-cols-2 gap-1 rounded-lg bg-paper-2 p-1 text-[13px]">
               <button
                 type="button"
                 onClick={() => switchMethod("phone")}
-                className={`rounded-lg py-2 font-semibold transition ${
+                className={`rounded-md py-1.5 font-medium transition-colors ${
                   method === "phone"
-                    ? "bg-white text-neutral-900 shadow"
-                    : "text-neutral-500"
+                    ? "bg-paper text-ink shadow-paper"
+                    : "text-ink-3 hover:text-ink"
                 }`}
               >
                 Telefone
@@ -113,10 +120,10 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => switchMethod("email")}
-                className={`rounded-lg py-2 font-semibold transition ${
+                className={`rounded-md py-1.5 font-medium transition-colors ${
                   method === "email"
-                    ? "bg-white text-neutral-900 shadow"
-                    : "text-neutral-500"
+                    ? "bg-paper text-ink shadow-paper"
+                    : "text-ink-3 hover:text-ink"
                 }`}
               >
                 E-mail
@@ -148,14 +155,14 @@ export default function LoginPage() {
                   autoFocus
                 />
               )}
-              <Button full onClick={sendCode} loading={loading} disabled={!canSend}>
+              <Button full size="lg" onClick={sendCode} loading={loading} disabled={!canSend}>
                 Receber código
               </Button>
             </>
           ) : (
             <>
-              <p className="text-xs text-neutral-500">
-                Enviado para <strong>{identifier}</strong>
+              <p className="text-[12px] text-ink-4">
+                Enviado para <span className="font-medium text-ink-2">{identifier}</span>
               </p>
               <Input
                 label="Código"
@@ -165,9 +172,11 @@ export default function LoginPage() {
                 value={code}
                 onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))}
                 autoFocus
+                className="font-mono tracking-[0.4em]"
               />
               <Button
                 full
+                size="lg"
                 onClick={verifyCode}
                 loading={loading}
                 disabled={code.length < 4}
@@ -176,7 +185,7 @@ export default function LoginPage() {
               </Button>
               <button
                 type="button"
-                className="block w-full text-center text-xs text-neutral-500 underline"
+                className="block w-full text-center text-[12px] text-ink-4 underline underline-offset-4 hover:text-ink-2"
                 onClick={() => {
                   setStep("identify");
                   setCode("");
@@ -188,17 +197,17 @@ export default function LoginPage() {
           )}
 
           {error && (
-            <p className="rounded-lg bg-red-50 p-2 text-xs text-red-600">
+            <p className="rounded-md border border-ember/30 bg-ember-weak px-3 py-2 text-[12px] text-ember">
               {error}
             </p>
           )}
         </Card>
 
-        <p className="text-center text-xs text-neutral-500">
+        <p className="text-center text-[12px] text-ink-4">
           É a loja?{" "}
           <Link
             href="/loja/login"
-            className="font-semibold text-brand-600 underline"
+            className="font-medium text-ink-2 underline underline-offset-4 hover:text-ember"
           >
             Acesso do estabelecimento
           </Link>
