@@ -4,13 +4,110 @@
 
 :root {
   color-scheme: light;
+
+  /* Operação Limpa — design tokens */
+  --paper: #FAFAF7;
+  --paper-2: #F2F0E9;
+  --paper-3: #E9E6DC;
+  --ink: #0A0A0A;
+  --ink-2: #3A3934;
+  --ink-3: #5C5A53;
+  --ink-4: #86847C;
+  --line: #D9D6CD;
+  --line-subtle: #E5E2D8;
+  --line-strong: #B8B4A9;
+  --ember: #E5481C;
+  --ember-soft: #F0683F;
+  --ember-weak: #FCE7DE;
 }
 
-html, body {
-  @apply bg-neutral-50 text-neutral-900 antialiased;
+html,
+body {
+  background: var(--paper);
+  color: var(--ink);
   -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "cv11";
 }
 
-/* área safe para iOS PWA */
+/* Selection com brasa suave */
+::selection {
+  background: var(--ember);
+  color: var(--paper);
+}
+
+/* Safe area iOS PWA */
 .safe-top { padding-top: env(safe-area-inset-top); }
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* Linha tracejada de cupom — usada em separadores de cards */
+.divider-dashed {
+  background-image: linear-gradient(
+    to right,
+    var(--line) 0 6px,
+    transparent 6px 12px
+  );
+  background-size: 12px 1px;
+  background-repeat: repeat-x;
+  background-position: 0 50%;
+  height: 1px;
+  border: 0;
+}
+
+/* Linha de rota — motivo decorativo dos cards de pedido */
+.route-line::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 8px;
+  border-left: 1.5px solid var(--ember);
+  border-bottom: 1.5px solid var(--ember);
+  border-bottom-left-radius: 8px;
+  vertical-align: middle;
+  margin-bottom: 2px;
+}
+
+/* Dot de status — círculo sólido pequeno antes do label */
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-right: 8px;
+  background: currentColor;
+}
+
+/* Halo sutil para CTA primário on-focus */
+.ring-ember {
+  box-shadow: 0 0 0 4px rgba(229, 72, 28, 0.18);
+}
+
+/* Grão de papel decorativo (aplicar em fundos grandes) */
+.paper-grain {
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(10, 10, 10, 0.035) 1px,
+    transparent 0
+  );
+  background-size: 14px 14px;
+}
+
+/* Animação suave para atualizações em realtime (pulse de novidade) */
+@keyframes ember-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 28, 0.35); }
+  50%      { box-shadow: 0 0 0 8px rgba(229, 72, 28, 0); }
+}
+.animate-ember-pulse {
+  animation: ember-pulse 1.6s ease-out infinite;
+}
+
+/* Respeitar prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -9,12 +9,15 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export const Input = forwardRef<HTMLInputElement, Props>(function Input(
   { className, label, hint, error, id, ...rest },
-  ref
+  ref,
 ) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-1.5">
       {label && (
-        <label htmlFor={id} className="text-sm font-medium text-neutral-700">
+        <label
+          htmlFor={id}
+          className="text-[12px] font-medium uppercase tracking-[0.08em] text-ink-3"
+        >
           {label}
         </label>
       )}
@@ -22,17 +25,17 @@ export const Input = forwardRef<HTMLInputElement, Props>(function Input(
         id={id}
         ref={ref}
         className={cn(
-          "w-full rounded-xl border border-neutral-200 bg-white px-4 py-3 text-base",
-          "focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-500/30",
-          error && "border-red-400 focus:border-red-500 focus:ring-red-300/30",
-          className
+          "w-full rounded-lg border border-line bg-paper px-3.5 py-2.5 text-[15px] text-ink placeholder:text-ink-4",
+          "transition-colors focus:border-ink focus:outline-none focus:ring-2 focus:ring-ink/10",
+          error && "border-ember focus:border-ember focus:ring-ember/15",
+          className,
         )}
         {...rest}
       />
       {error ? (
-        <p className="text-xs text-red-600">{error}</p>
+        <p className="text-xs text-ember">{error}</p>
       ) : hint ? (
-        <p className="text-xs text-neutral-500">{hint}</p>
+        <p className="text-xs text-ink-4">{hint}</p>
       ) : null}
     </div>
   );
