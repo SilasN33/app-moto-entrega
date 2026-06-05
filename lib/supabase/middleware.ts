@@ -44,6 +44,7 @@ export async function updateSession(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/icons") ||
+    pathname.startsWith("/brand") ||
     pathname === "/manifest.webmanifest" ||
     pathname === "/favicon.ico";
 
