@@ -20,14 +20,14 @@ export default function LandingPage() {
           poster="/brand/journey-poster.webp"
           className="h-full w-full object-cover"
         />
-        {/* Tom geral pra legibilidade — escurece bordas e topo/base */}
+        {/* Tom geral pra legibilidade — escurece topo/base mas deixa o meio respirar */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/15 to-ink/75"
+          className="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/5 to-ink/70"
         />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(10,10,10,0.45)_85%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(10,10,10,0.40)_90%)]"
         />
       </div>
       <div className="relative">
@@ -55,14 +55,14 @@ export default function LandingPage() {
         </div>
       </header>
 
-      {/* Hero — texto deita por cima do vídeo */}
+      {/* Hero — texto no terço inferior pra moto respirar no topo */}
       <section className="relative">
-        <div className="mx-auto flex min-h-[88vh] max-w-6xl flex-col justify-center px-6 py-20 md:py-28">
+        <div className="mx-auto flex min-h-[92vh] max-w-6xl flex-col justify-end px-6 pb-16 pt-32 md:pb-20 md:pt-40">
           <span className="inline-flex w-fit items-center gap-2 rounded-full border border-paper/15 bg-paper/5 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-paper/80 backdrop-blur-sm">
             <span className="h-1.5 w-1.5 rounded-full bg-ember" />
             Cockpit de delivery
           </span>
-          <h1 className="mt-7 max-w-4xl text-[44px] font-semibold leading-[1.02] tracking-tighter2 text-paper md:text-[72px] lg:text-[88px]">
+          <h1 className="mt-6 max-w-4xl text-[40px] font-semibold leading-[1.02] tracking-tighter2 text-paper md:text-[60px] lg:text-[76px]">
             Sua operação de delivery,
             <br />
             <span className="text-paper/55">sem planilha.</span>

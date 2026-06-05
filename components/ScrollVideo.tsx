@@ -27,9 +27,9 @@ export function ScrollVideo({ src, poster, className }: Props) {
       return;
     }
 
-    const isTouch =
-      typeof navigator !== "undefined" &&
-      (navigator.maxTouchPoints > 0 || /Mobi|Android/i.test(navigator.userAgent));
+    // Só consideramos touch device se o pointer principal é coarse.
+    // navigator.maxTouchPoints > 0 dá falso positivo em Macs/laptops Windows.
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
 
     if (isTouch) {
       video.loop = true;
@@ -51,7 +51,7 @@ export function ScrollVideo({ src, poster, className }: Props) {
       const progress = scrollMax > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollMax)) : 0;
       const target = progress * duration;
 
-      currentTime += (target - currentTime) * 0.18;
+      currentTime += (target - currentTime) * 0.32;
       if (Math.abs(target - currentTime) < 0.005) currentTime = target;
 
       try {
