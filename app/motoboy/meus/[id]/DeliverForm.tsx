@@ -71,7 +71,9 @@ export function DeliverForm({ orderId }: { orderId: string }) {
 
   return (
     <Card className="space-y-3">
-      <p className="text-sm font-medium">Confirmar entrega</p>
+      <p className="text-[12px] font-medium uppercase tracking-[0.1em] text-ink-3">
+        Confirmar entrega
+      </p>
 
       <input
         ref={fileInput}
@@ -87,23 +89,23 @@ export function DeliverForm({ orderId }: { orderId: string }) {
         <img
           src={preview}
           alt="Preview"
-          className="aspect-square w-full rounded-xl object-cover"
+          className="aspect-square w-full rounded-lg border border-line object-cover"
         />
       ) : (
         <button
           type="button"
           onClick={() => fileInput.current?.click()}
-          className="flex aspect-square w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed border-neutral-300 bg-neutral-50 text-neutral-500"
+          className="flex aspect-square w-full flex-col items-center justify-center gap-2 rounded-lg border-2 border-dashed border-line bg-paper-2 text-ink-3 transition-colors hover:border-line-strong hover:text-ink-2"
         >
-          <Camera className="h-8 w-8" />
-          <span className="text-sm font-medium">Tirar foto da entrega</span>
+          <Camera className="h-7 w-7" strokeWidth={1.5} />
+          <span className="text-[13px] font-medium">Tirar foto da entrega</span>
         </button>
       )}
 
       {preview && (
         <Button
           type="button"
-          variant="secondary"
+          variant="outline"
           full
           onClick={() => fileInput.current?.click()}
         >
@@ -112,10 +114,12 @@ export function DeliverForm({ orderId }: { orderId: string }) {
       )}
 
       {error && (
-        <p className="rounded-lg bg-red-50 p-2 text-xs text-red-600">{error}</p>
+        <p className="rounded-md border border-ember/30 bg-ember-weak px-3 py-2 text-[12px] text-ember">
+          {error}
+        </p>
       )}
 
-      <Button full onClick={deliver} loading={loading} disabled={!file}>
+      <Button full size="lg" onClick={deliver} loading={loading} disabled={!file}>
         Marcar como entregue
       </Button>
     </Card>

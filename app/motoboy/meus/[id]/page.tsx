@@ -1,11 +1,13 @@
 import { notFound } from "next/navigation";
 import { requireMotoboy } from "@/lib/auth";
 import { createClient } from "@/lib/supabase/server";
-import { Card } from "@/components/ui/Card";
+import { Card, CardDivider } from "@/components/ui/Card";
 import { StatusBadge } from "@/components/ui/Badge";
+import { PageHeading } from "@/components/ui/PageHeading";
 import { formatBRL } from "@/lib/utils";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import { Phone, MapPin } from "lucide-react";
 import { DeliverForm } from "./DeliverForm";
 
 export const dynamic = "force-dynamic";
@@ -28,50 +30,88 @@ export default async function MyOrderDetailPage({
 
   if (!order) notFound();
 
-  return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between">
-        <h2 className="text-base font-semibold">
-          {order.code ? `Pedido #${order.code}` : "Pedido"}
-        </h2>
-        <StatusBadge status={order.status} />
-      </div>
+  const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(order.address)}`;
 
-      <Card className="space-y-2">
-        <Row label="Cliente" value={order.customer_name ?? "—"} />
+  return (
+    <div className="space-y-6">
+      <PageHeading
+        eyebrow={order.code ? `#${order.code}` : "Em rota"}
+        title={order.customer_name ?? "Pedido"}
+        action={<StatusBadge status={order.status} />}
+      />
+
+      <Card>
+        <a
+          href={mapsUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="flex items-start gap-3 rounded-lg p-1 hover:bg-paper-2"
+        >
+          <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-ember" strokeWidth={2} />
+          <div className="min-w-0 flex-1">
+            <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-4">
+              Endereço · abrir no mapa
+            </p>
+            <p className="text-[15px] font-medium text-ink">{order.address}</p>
+          </div>
+        </a>
+
         {order.customer_phone && (
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-neutral-500">Telefone</span>
+          <>
+            <CardDivider />
             <a
               href={`tel:${order.customer_phone}`}
-              className="text-sm font-medium text-brand-600"
+              className="flex items-center gap-3 rounded-lg p-1 hover:bg-paper-2"
             >
-              {order.customer_phone}
+              <Phone className="h-4 w-4 shrink-0 text-ember" strokeWidth={2} />
+              <div className="min-w-0 flex-1">
+                <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-4">
+                  Cliente · toque pra ligar
+                </p>
+                <p className="font-mono text-[15px] font-medium text-ink">
+                  {order.customer_phone}
+                </p>
+              </div>
             </a>
-          </div>
+          </>
         )}
-        <div className="flex items-start justify-between gap-3">
-          <span className="text-sm text-neutral-500">Endereço</span>
-          <a
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              order.address
-            )}`}
-            target="_blank"
-            rel="noreferrer"
-            className="text-right text-sm font-medium text-brand-600 underline"
-          >
-            {order.address}
-          </a>
+
+        {order.notes && (
+          <>
+            <CardDivider />
+            <div className="p-1">
+              <p className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-4">
+                Observação
+              </p>
+              <p className="text-[14px] italic text-ink-2">{order.notes}</p>
+            </div>
+          </>
+        )}
+
+        <CardDivider />
+        <div className="flex items-baseline justify-between p-1">
+          <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-4">
+            Você recebe
+          </span>
+          <span className="font-mono text-[20px] font-semibold text-ember">
+            {formatBRL(order.amount)}
+          </span>
         </div>
-        {order.notes && <Row label="Obs." value={order.notes} />}
-        <Row label="Você recebe" value={formatBRL(order.amount)} />
+
         {order.picked_at && (
-          <Row
-            label="Pego em"
-            value={format(new Date(order.picked_at), "dd/MM HH:mm", {
-              locale: ptBR,
-            })}
-          />
+          <>
+            <CardDivider />
+            <div className="flex items-baseline justify-between p-1">
+              <span className="text-[11px] font-medium uppercase tracking-[0.1em] text-ink-4">
+                Pego em
+              </span>
+              <span className="font-mono text-[13px] text-ink-2">
+                {format(new Date(order.picked_at), "dd/MM HH:mm", {
+                  locale: ptBR,
+                })}
+              </span>
+            </div>
+          </>
         )}
       </Card>
 
@@ -79,24 +119,17 @@ export default async function MyOrderDetailPage({
 
       {order.status === "delivered" && order.photo_url && (
         <Card>
-          <p className="mb-2 text-sm font-medium">Foto enviada</p>
+          <p className="mb-3 text-[12px] font-medium uppercase tracking-[0.1em] text-ink-3">
+            Comprovante
+          </p>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={order.photo_url}
             alt="Foto da entrega"
-            className="aspect-square w-full rounded-xl object-cover"
+            className="aspect-square w-full rounded-lg border border-line object-cover"
           />
         </Card>
       )}
-    </div>
-  );
-}
-
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex items-start justify-between gap-3 py-1">
-      <span className="text-sm text-neutral-500">{label}</span>
-      <span className="text-right text-sm font-medium">{value}</span>
     </div>
   );
 }
