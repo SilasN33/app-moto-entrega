@@ -8,11 +8,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://motoentrega.app";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "MotoEntrega — operação de delivery, sem planilha",
-    template: "%s · MotoEntrega",
+    default: "Brasa — frota própria, sem intermediário",
+    template: "%s · Brasa",
   },
   description:
-    "Cadastre seus motoboys, despache pedidos, acompanhe entregas e feche o pagamento do mês em minutos. Feito pra restaurantes que rodam com frota própria.",
+    "Cockpit de delivery pra restaurante que entrega com motoboy próprio. Despache, acompanhe e feche o mês — sem comissão de marketplace, sem alugar app por entrega.",
   manifest: "/manifest.webmanifest",
   icons: {
     icon: "/icons/icon-192.png",
@@ -20,30 +20,30 @@ export const metadata: Metadata = {
   },
   appleWebApp: {
     capable: true,
-    title: "MotoEntrega",
+    title: "Brasa",
     statusBarStyle: "black-translucent",
   },
   openGraph: {
     type: "website",
     locale: "pt_BR",
-    siteName: "MotoEntrega",
-    title: "MotoEntrega — operação de delivery, sem planilha",
+    siteName: "Brasa",
+    title: "Brasa — frota própria, sem intermediário",
     description:
-      "Cadastre seus motoboys, despache pedidos, acompanhe entregas e feche o pagamento do mês em minutos.",
+      "Cockpit de delivery pra restaurante que entrega com motoboy próprio. Sem comissão de marketplace.",
     images: [
       {
         url: "/brand/og-card.png",
         width: 1200,
         height: 630,
-        alt: "MotoEntrega — operação de delivery sem planilha",
+        alt: "Brasa — frota própria, sem intermediário",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "MotoEntrega — operação de delivery, sem planilha",
+    title: "Brasa — frota própria, sem intermediário",
     description:
-      "Cadastre motoboys, despache, acompanhe e feche o mês em minutos.",
+      "Cockpit de delivery pra restaurante com frota própria. Sem comissão de marketplace.",
     images: ["/brand/og-card.png"],
   },
 };

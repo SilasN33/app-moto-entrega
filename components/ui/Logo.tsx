@@ -7,7 +7,7 @@ interface LogoProps {
 }
 
 /**
- * Marca "Operação Limpa" — mark é uma linha de rota que termina em pin brasa.
+ * Marca "Brasa" — mark é uma linha de rota que termina em pin brasa.
  * O "·" no fim do wordmark é o ponto de chegada (anchor visual).
  */
 export function Logo({
@@ -45,7 +45,7 @@ export function Logo({
       </svg>
       {showWordmark && (
         <span className="text-[15px] font-semibold leading-none">
-          MotoEntrega<span className="text-ember">·</span>
+          Brasa<span className="text-ember">·</span>
         </span>
       )}
     </span>

@@ -4,9 +4,9 @@ import { Button } from "@/components/ui/Button";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 
 export const metadata = {
-  title: "MotoEntrega — operação de delivery, sem planilha",
+  title: "Brasa — frota própria, sem intermediário",
   description:
-    "Cadastre seus motoboys, despache pedidos pelo app e feche o pagamento do mês com um botão. Feito pra restaurantes com frota própria.",
+    "Cockpit de delivery pra restaurante que já tem motoboy. Despache pelo app, acompanhe a entrega e feche o mês — sem comissão de marketplace, sem alugar app por entrega.",
 };
 
 export default function LandingPage() {
@@ -40,17 +40,18 @@ export default function LandingPage() {
           <div className="space-y-7">
             <span className="inline-flex items-center gap-2 rounded-full border border-line bg-paper px-3 py-1 text-[11px] font-medium uppercase tracking-[0.14em] text-ink-3">
               <span className="h-1.5 w-1.5 rounded-full bg-ember" />
-              Cockpit de delivery
+              Frota própria
             </span>
             <h1 className="text-[44px] font-semibold leading-[1.04] tracking-tighter2 text-ink md:text-[56px] lg:text-[64px]">
-              Sua operação de delivery,
+              Seu delivery
               <br />
-              <span className="text-ink-3">sem planilha.</span>
+              <span className="text-ink-3">
+                não é <em className="italic">marketplace</em>.
+              </span>
             </h1>
             <p className="max-w-xl text-[17px] leading-relaxed text-ink-3">
-              Cadastre seus motoboys, despache pedidos pelo app e feche o
-              pagamento do mês com um botão. Feito pra restaurantes que rodam
-              com frota própria.
+              Você já tem motoboy. Já tem cliente. Faltava um cockpit pra rodar
+              a operação sem alugar app por entrega. É isso que o Brasa faz.
             </p>
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <Link href="/loja/login">
@@ -145,7 +146,7 @@ export default function LandingPage() {
         <div className="mx-auto max-w-6xl px-6 py-20">
           <div className="mb-12 max-w-2xl">
             <span className="text-[11px] font-medium uppercase tracking-[0.16em] text-ember">
-              Por que MotoEntrega
+              Por que Brasa
             </span>
             <h2 className="mt-2 text-3xl font-semibold tracking-tighter2 md:text-4xl">
               O suficiente. Nada além.
@@ -164,8 +165,8 @@ export default function LandingPage() {
             />
             <Feature
               num="02"
-              title="Pagamento transparente"
-              body="Bruto menos descontos é igual a a pagar. A conta aparece no relatório do mês — pro dono e pro motoboy. Sem mistério."
+              title="Zero comissão por entrega"
+              body="O Brasa não mete a colher no que sai do bolso do cliente. Você combina direto com o motoboy — taxa, fixo, bônus, o que for. A gente só registra."
             />
             <Feature
               num="03"
@@ -256,10 +257,10 @@ export default function LandingPage() {
       <section className="border-t border-line/70">
         <div className="mx-auto max-w-3xl px-6 py-20 text-center">
           <h2 className="text-3xl font-semibold tracking-tighter2 md:text-[40px]">
-            Pronto pra parar de fazer conta no caderno?
+            Pronto pra tirar o app do meio?
           </h2>
           <p className="mt-3 text-[15px] leading-relaxed text-ink-3">
-            Cadastre sua loja em minutos. É grátis pra começar.
+            Cadastre sua loja, traga sua frota, comece a despachar hoje.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link href="/loja/login">
@@ -283,7 +284,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-3">
             <Logo />
             <span className="hidden sm:inline">
-              Operação de delivery, sem planilha.
+              Frota própria, sem intermediário.
             </span>
           </div>
           <div className="flex items-center gap-5">
