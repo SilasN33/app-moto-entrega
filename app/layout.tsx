@@ -1,5 +1,18 @@
 import type { Metadata, Viewport } from "next";
+import { Sora, Inter } from "next/font/google";
 import "./globals.css";
+
+const sora = Sora({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-body",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Moto Entrega",
@@ -31,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${sora.variable} ${inter.variable}`}>
       <body>{children}</body>
     </html>
   );

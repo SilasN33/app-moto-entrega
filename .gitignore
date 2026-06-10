@@ -17,3 +17,6 @@ MOTOBOYS.xlsx
 
 # Claude Code
 .claude/
+
+# backups hi-res dos assets gerados (IA) — não versionar
+assets-src/

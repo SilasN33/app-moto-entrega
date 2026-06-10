@@ -44,6 +44,7 @@ export async function updateSession(request: NextRequest) {
     pathname.startsWith("/_next") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/icons") ||
+    pathname.startsWith("/assets") ||
     pathname === "/manifest.webmanifest" ||
     pathname === "/favicon.ico";
 
@@ -57,10 +58,10 @@ export async function updateSession(request: NextRequest) {
 
   // Já logado tentando ver tela de login → manda pro painel certo.
   // Exceção: /loja/redefinir-senha pode ser acessada logado (fluxo de reset).
+  // "/" fica fora: é a landing pública — logado ou não, todo mundo pode ver.
   const isLoginScreen =
     pathname === "/login" ||
     pathname === "/verify" ||
-    pathname === "/" ||
     pathname === "/loja/login";
 
   if (user && isLoginScreen) {

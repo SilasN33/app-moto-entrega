@@ -14,3 +14,32 @@ html, body {
 /* área safe para iOS PWA */
 .safe-top { padding-top: env(safe-area-inset-top); }
 .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+/* ---- Landing Brasa ---- */
+@keyframes ember-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.5); }
+}
+
+#landing-root ::selection {
+  background: #FF6A2B;
+  color: #F4EDE4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #landing-root [style*="ember-pulse"] { animation: none !important; }
+}
+
+/* Nav sobre o trecho Charcoal Night: vidro escuro em vez de barra bege */
+body.nav-on-dark #landing-root header {
+  background: rgba(30, 27, 25, 0.6) !important;
+  box-shadow: 0 1px 0 0 rgba(244, 237, 228, 0.08) !important;
+}
+body.nav-on-dark #landing-root header a,
+body.nav-on-dark #landing-root header span {
+  color: #f4ede4;
+}
+body.nav-on-dark #landing-root header a[href="/login"] {
+  background: #ff6a2b;
+  color: #fff;
+}
