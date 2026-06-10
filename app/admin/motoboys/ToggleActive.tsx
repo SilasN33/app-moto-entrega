@@ -24,10 +24,17 @@ export function ToggleActive({ id, active }: { id: string; active: boolean }) {
       type="button"
       onClick={toggle}
       disabled={pending}
-      className={`rounded-full px-3 py-1 text-xs font-semibold ${
-        value ? "bg-green-100 text-green-800" : "bg-neutral-200 text-neutral-600"
+      className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-[11px] font-medium tracking-tightish transition-colors disabled:opacity-50 ${
+        value
+          ? "bg-status-delivered-bg text-status-delivered"
+          : "bg-paper-2 text-ink-4"
       }`}
     >
+      <span
+        className={`h-1.5 w-1.5 rounded-full ${
+          value ? "bg-status-delivered" : "bg-ink-4"
+        }`}
+      />
       {value ? "Ativo" : "Inativo"}
     </button>
   );

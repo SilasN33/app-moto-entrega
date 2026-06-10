@@ -74,7 +74,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.05 }}
           className="mb-5 rounded-full border border-brasa-charcoal/10 bg-brasa-warmwhite/60 px-4 py-1.5 text-xs font-medium uppercase tracking-[0.18em] text-brasa-charcoal/60 backdrop-blur"
         >
-          Gestão de entregas para restaurantes
+          Frota própria, sem intermediário
         </motion.p>
 
         <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[1.04] tracking-tight text-brasa-charcoal sm:text-6xl lg:text-7xl">
@@ -104,8 +104,9 @@ export default function Hero() {
           transition={{ duration: 0.7, delay: 0.6 }}
           className="mt-6 max-w-xl text-base leading-relaxed text-brasa-charcoal/65 sm:text-lg"
         >
-          Pedidos, motoboys, fotos de entrega e o acerto do fim do mês —
-          tudo num só lugar. Sem planilha, sem grito, sem esquecimento.
+          Você já tem motoboy. Já tem cliente. Faltava o cockpit: pedidos,
+          fotos de entrega e o acerto do mês — sem comissão de marketplace,
+          sem alugar app por entrega.
         </motion.p>
 
         <motion.div
@@ -115,7 +116,7 @@ export default function Hero() {
           className="mt-9 flex flex-col items-center gap-3 sm:flex-row"
         >
           <Link
-            href="/login"
+            href="/loja/login"
             className="group rounded-full bg-brasa-ember px-7 py-3.5 text-sm font-semibold text-white shadow-[0_8px_32px_rgba(255,106,43,0.45)] transition-all duration-300 hover:scale-[1.03] hover:shadow-[0_12px_40px_rgba(255,106,43,0.6)]"
           >
             Começar agora

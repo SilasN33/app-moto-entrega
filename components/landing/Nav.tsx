@@ -44,12 +44,20 @@ export default function Nav() {
           </a>
         </div>
 
-        <Link
-          href="/login"
-          className="rounded-full bg-brasa-charcoal px-5 py-2 text-sm font-medium text-brasa-warmwhite transition-all duration-300 hover:bg-brasa-ember hover:shadow-[0_4px_24px_rgba(255,106,43,0.45)]"
-        >
-          Entrar
-        </Link>
+        <div className="flex items-center gap-2">
+          <Link
+            href="/login"
+            className="hidden rounded-full px-4 py-2 text-sm font-medium text-brasa-charcoal/60 transition-colors hover:text-brasa-charcoal sm:inline-block"
+          >
+            Sou motoboy
+          </Link>
+          <Link
+            href="/loja/login"
+            className="rounded-full bg-brasa-charcoal px-5 py-2 text-sm font-medium text-brasa-warmwhite transition-all duration-300 hover:bg-brasa-ember hover:shadow-[0_4px_24px_rgba(255,106,43,0.45)]"
+          >
+            Acesso da loja
+          </Link>
+        </div>
       </nav>
     </header>
   );

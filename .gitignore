@@ -20,3 +20,10 @@ MOTOBOYS.xlsx
 
 # backups hi-res dos assets gerados (IA) — não versionar
 assets-src/
+
+# brand source assets — gerados via HiggsField, mantemos só as variantes otimizadas
+public/brand/*-original-*.png
+public/brand/*-original-*.jpeg
+
+# Playwright MCP artefatos
+.playwright-mcp/

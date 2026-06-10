@@ -9,9 +9,9 @@ import Trust from "@/components/landing/sections/Trust";
 import FinalCta from "@/components/landing/sections/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Brasa — Gestão de entregas para restaurantes",
+  title: "Brasa — frota própria, sem intermediário",
   description:
-    "Pedidos, motoboys, fotos de entrega e o acerto do fim do mês — tudo num só lugar. Acenda sua operação de entregas.",
+    "Cockpit de delivery pra restaurante que já tem motoboy. Despache pelo app, acompanhe a entrega e feche o mês — sem comissão de marketplace, sem alugar app por entrega.",
 };
 
 export default function LandingPage() {

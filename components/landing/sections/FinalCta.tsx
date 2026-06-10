@@ -60,7 +60,7 @@ export default function FinalCta() {
                 width: size,
                 height: size,
                 boxShadow: `0 0 ${size * 4}px ${size}px rgba(255,106,43,0.4)`,
-                animation: `ember-pulse 3.2s ease-in-out ${i * 0.35}s infinite`,
+                animation: `constellation-pulse 3.2s ease-in-out ${i * 0.35}s infinite`,
               }}
             />
           ))}
@@ -107,7 +107,7 @@ export default function FinalCta() {
           transition={{ duration: 0.8, delay: 0.4 }}
         >
           <Link
-            href="/login"
+            href="/loja/login"
             className="group mt-10 inline-block rounded-full bg-brasa-ember px-9 py-4 text-sm font-semibold text-white shadow-[0_8px_40px_rgba(255,106,43,0.5)] transition-all duration-300 hover:scale-[1.04] hover:shadow-[0_12px_56px_rgba(255,106,43,0.7)]"
           >
             Entrar na Brasa

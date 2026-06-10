@@ -93,7 +93,7 @@ export function NewOrderForm() {
         />
 
         <div className="space-y-2">
-          <label className="text-sm font-medium text-neutral-700">
+          <label className="text-[12px] font-medium uppercase tracking-[0.08em] text-ink-3">
             Valor pago ao motoboy *
           </label>
           <div className="flex gap-2">
@@ -102,10 +102,10 @@ export function NewOrderForm() {
                 type="button"
                 key={v}
                 onClick={() => setAmount(v)}
-                className={`flex-1 rounded-xl border py-2 text-sm font-semibold transition ${
+                className={`flex-1 rounded-lg border py-2.5 font-mono text-[14px] font-semibold transition-colors ${
                   amount === v
-                    ? "border-brand-600 bg-brand-50 text-brand-700"
-                    : "border-neutral-200 bg-white text-neutral-700"
+                    ? "border-ember bg-ember-weak text-ember"
+                    : "border-line bg-paper text-ink-3 hover:border-line-strong hover:text-ink"
                 }`}
               >
                 R$ {v}
@@ -126,10 +126,12 @@ export function NewOrderForm() {
         </div>
 
         {error && (
-          <p className="rounded-lg bg-red-50 p-2 text-xs text-red-600">{error}</p>
+          <p className="rounded-md border border-ember/30 bg-ember-weak px-3 py-2 text-[12px] text-ember">
+            {error}
+          </p>
         )}
 
-        <Button type="submit" loading={loading} full>
+        <Button type="submit" loading={loading} full size="lg">
           Criar pedido
         </Button>
       </form>

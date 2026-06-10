@@ -1,44 +1,71 @@
 import { cn } from "@/lib/utils";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 
-type Variant = "primary" | "secondary" | "danger" | "ghost";
+type Variant = "primary" | "secondary" | "danger" | "ghost" | "outline";
+type Size = "sm" | "md" | "lg";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
+  size?: Size;
   loading?: boolean;
   full?: boolean;
 }
 
 const variants: Record<Variant, string> = {
   primary:
-    "bg-brand-600 text-white hover:bg-brand-700 active:bg-brand-700 disabled:bg-brand-600/50",
+    "bg-ink text-paper hover:bg-ink-2 active:bg-ink-2 disabled:bg-ink/40 disabled:cursor-not-allowed",
   secondary:
-    "bg-neutral-100 text-neutral-900 hover:bg-neutral-200 active:bg-neutral-200 disabled:opacity-60",
+    "bg-paper-2 text-ink hover:bg-paper-3 active:bg-paper-3 disabled:opacity-60",
   danger:
-    "bg-red-600 text-white hover:bg-red-700 active:bg-red-700 disabled:opacity-60",
+    "bg-ember text-paper hover:bg-ember-soft active:bg-ember-soft disabled:opacity-60",
   ghost:
-    "bg-transparent text-neutral-700 hover:bg-neutral-100 active:bg-neutral-200",
+    "bg-transparent text-ink-2 hover:bg-paper-2 active:bg-paper-3",
+  outline:
+    "bg-transparent text-ink ring-1 ring-inset ring-line hover:bg-paper-2 active:bg-paper-3",
+};
+
+const sizes: Record<Size, string> = {
+  sm: "h-9 px-3 text-[13px]",
+  md: "h-11 px-4 text-sm",
+  lg: "h-12 px-5 text-[15px]",
 };
 
 export const Button = forwardRef<HTMLButtonElement, Props>(function Button(
-  { className, variant = "primary", loading, full, children, disabled, ...rest },
-  ref
+  {
+    className,
+    variant = "primary",
+    size = "md",
+    loading,
+    full,
+    children,
+    disabled,
+    ...rest
+  },
+  ref,
 ) {
   return (
     <button
       ref={ref}
       disabled={disabled || loading}
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition",
-        "focus:outline-none focus:ring-2 focus:ring-brand-500/40",
+        "inline-flex items-center justify-center gap-2 rounded-lg font-medium tracking-tightish transition",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ember/40 focus-visible:ring-offset-2 focus-visible:ring-offset-paper",
         full && "w-full",
+        sizes[size],
         variants[variant],
-        className
+        className,
       )}
       {...rest}
     >
       {loading ? (
-        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+        <span
+          className={cn(
+            "h-3.5 w-3.5 animate-spin rounded-full border-2 border-t-transparent",
+            variant === "primary" || variant === "danger"
+              ? "border-paper"
+              : "border-ink",
+          )}
+        />
       ) : null}
       {children}
     </button>

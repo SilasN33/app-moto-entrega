@@ -2,13 +2,14 @@ import { NextResponse } from "next/server";
 
 export function GET() {
   return NextResponse.json({
-    name: "Moto Entrega",
-    short_name: "Moto Entrega",
-    description: "Gestão de entregas e pagamento de motoboys",
+    name: "Brasa",
+    short_name: "Brasa",
+    description:
+      "Cockpit de delivery pra restaurante com frota própria. Sem comissão de marketplace.",
     start_url: "/",
     display: "standalone",
-    background_color: "#fff7ed",
-    theme_color: "#ea580c",
+    background_color: "#FAFAF7",
+    theme_color: "#E5481C",
     orientation: "portrait",
     icons: [
       { src: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
